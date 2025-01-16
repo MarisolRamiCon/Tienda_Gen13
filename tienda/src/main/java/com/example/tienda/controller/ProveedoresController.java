@@ -40,4 +40,5 @@ public class ProveedoresController {
     public void delete(@RequestBody Proveedores proveedor){
         proveedoresService.delete(proveedor);
     }
+    //Todo agregar respuesta del elemento borrado
 }
