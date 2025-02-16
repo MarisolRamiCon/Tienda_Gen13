@@ -16,6 +16,7 @@ public class ProductoController {
     @Autowired
     ProductoService productoService;
 
+
     @GetMapping("/mostrar/productos")
     public List<Producto> readAll(){
         return productoService.readAll();
@@ -28,8 +29,8 @@ public class ProductoController {
 
     //Mostrar producto por precio menor a? y a categoria especifica
     @GetMapping("/mostrar/preciomenor")
-    public List<Producto> precioMenor(@PathParam("precio_p") Double precio_p){
-        return productoService.precioMenor(precio_p);
+    public List<Producto> precioMenor(@PathParam("precio_p") Double precio_p, @PathParam("stock") Integer stock){
+        return productoService.precioMenor(precio_p, stock);
     }
 
 

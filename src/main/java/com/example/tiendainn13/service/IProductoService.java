@@ -12,6 +12,6 @@ public interface IProductoService {
     public ProductoResponse create (Producto producto);
     public ProductoResponse update (Producto producto);
     public void delete(Producto producto);
-    public List<Producto> precioMenor(Double precio_p);
+    public List<Producto> precioMenor(Double precio_p, Integer stock);
 
 }

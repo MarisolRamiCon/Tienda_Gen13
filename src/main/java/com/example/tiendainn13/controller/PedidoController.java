@@ -2,6 +2,7 @@ package com.example.tiendainn13.controller;
 
 import com.example.tiendainn13.entity.Pedido;
 import com.example.tiendainn13.service.impl.PedidoService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class PedidoController {
     public Optional<Pedido> readById(@PathVariable int id){
         return pedidoService.readById(id);
     }
+
 
     @PostMapping("/crear/pedido")
     public Pedido create(@RequestBody Pedido pedido){

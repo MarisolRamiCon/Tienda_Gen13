@@ -29,7 +29,7 @@ public class InventarioService implements IInventarioService {
     @Override
     public InventarioResponse create(Inventario inventario) {
         iInventarioRepository.save(inventario) ;
-        InventarioResponse inventarioResponse = new InventarioResponse(inventario.getCantidadStockInve());
+        InventarioResponse inventarioResponse = new InventarioResponse(inventario.getProducto(),inventario.getCantidadStockInve());
         return inventarioResponse;
     }
 

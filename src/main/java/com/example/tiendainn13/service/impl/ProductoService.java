@@ -46,8 +46,8 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public List<Producto> precioMenor(Double precio_p) {
-        return productoRepository.precioMenor(precio_p);
+    public List<Producto> precioMenor(Double precio_p, Integer stock) {
+        return productoRepository.precioMenor(precio_p, stock);
     }
 
 
