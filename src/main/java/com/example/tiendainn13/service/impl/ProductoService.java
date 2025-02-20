@@ -68,5 +68,15 @@ public class ProductoService implements IProductoService {
         return productoRepository.precioMenor(precio_p, stock);
     }
 
+    @Override
+    public List<Producto> buscarPorNombre(String nombre) {
+        return productoRepository.findByNombreProducto(nombre);
+    }
+
+    @Override
+    public List<Producto> buscarPorNombreYPrecio(String nombre, Double precio) {
+        return productoRepository.findByNombreProductoAndPrecioProducto(nombre, precio);
+    }
+
 
 }

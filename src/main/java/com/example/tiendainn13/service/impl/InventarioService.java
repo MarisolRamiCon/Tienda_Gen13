@@ -60,4 +60,9 @@ public class InventarioService implements IInventarioService {
             return "El inventario no existe";
         }
     }
+
+    @Override
+    public List<Inventario> buscarPorCantidadStockInve(Integer stock) {
+        return iInventarioRepository.findByCantidadStockInve(stock);
+    }
 }

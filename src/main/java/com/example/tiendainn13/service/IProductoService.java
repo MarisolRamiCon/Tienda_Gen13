@@ -13,5 +13,8 @@ public interface IProductoService {
     public ProductoResponse update (Producto producto);
     public String delete(Producto producto);
     public List<Producto> precioMenor(Double precio_p, Integer stock);
+    public List<Producto> buscarPorNombre(String nombre);
+    public List<Producto> buscarPorNombreYPrecio(String nombre, Double precio);
+
 
 }

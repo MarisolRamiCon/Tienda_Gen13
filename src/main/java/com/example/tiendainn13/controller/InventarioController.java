@@ -3,6 +3,7 @@ package com.example.tiendainn13.controller;
 import com.example.tiendainn13.entity.Inventario;
 import com.example.tiendainn13.response.InventarioResponse;
 import com.example.tiendainn13.service.impl.InventarioService;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,11 @@ public class InventarioController {
     @GetMapping("/mostrar/inventario/{id}")
     public Optional<Inventario> readById(@PathVariable int id){
         return inventarioService.readById(id);
+    }
+
+    @GetMapping("/buscar/stock")
+    public List<Inventario> buscarPorCantidadStockInve(@PathParam("cantidadStockInve") Integer stock){
+        return inventarioService.buscarPorCantidadStockInve(stock);
     }
 
     @PostMapping("/crear/inventario")

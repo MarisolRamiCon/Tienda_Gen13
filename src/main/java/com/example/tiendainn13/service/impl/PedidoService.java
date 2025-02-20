@@ -1,5 +1,6 @@
 package com.example.tiendainn13.service.impl;
 
+import com.example.tiendainn13.entity.Inventario;
 import com.example.tiendainn13.entity.Pedido;
 import com.example.tiendainn13.repository.IPedidoRepository;
 import com.example.tiendainn13.service.IPedidoService;
@@ -55,6 +56,11 @@ public class PedidoService implements IPedidoService {
             log.info("El pedido no existe");
             return "El pedido no existe";
         }
+    }
+
+    @Override
+    public List<Pedido> buscarPorTotalPedido(Integer tPedido) {
+        return pedidoRepository.findByTotalPedido(tPedido);
     }
 
 

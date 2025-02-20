@@ -25,6 +25,11 @@ public class PedidoController {
         return pedidoService.readById(id);
     }
 
+    @GetMapping("/buscartotalpedido")
+    public List<Pedido> buscarPorTotalPedido(@PathParam("totalPedido") Integer tPedido){
+        return pedidoService.buscarPorTotalPedido(tPedido);
+    }
+
 
     @PostMapping("/crear/pedido")
     public Pedido create(@RequestBody Pedido pedido){

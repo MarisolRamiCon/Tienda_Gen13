@@ -33,6 +33,17 @@ public class ProductoController {
         return productoService.precioMenor(precio_p, stock);
     }
 
+    //Mostar producto busqueda por nombre
+    @GetMapping("/buscar/nombre")
+    public List<Producto> buscarPorNombre(@PathParam("nombreProducto") String nombre){
+       return productoService.buscarPorNombre(nombre);
+    }
+
+    @GetMapping("/buscar/nombre/precio")
+    public List<Producto> buscarPorNombreYPrecio(@PathParam("nombreProducto") String nombre,
+                                                 @PathParam("precioProducto") Double precio){
+        return productoService.buscarPorNombreYPrecio(nombre, precio);
+    }
 
     @PostMapping("/crear/producto")
     public ProductoResponse create(@RequestBody Producto producto){
