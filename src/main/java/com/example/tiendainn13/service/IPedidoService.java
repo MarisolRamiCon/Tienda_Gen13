@@ -10,6 +10,6 @@ public interface IPedidoService {
     public Optional<Pedido> readById(int id);
     public Pedido create (Pedido pedido);
     public Pedido update (Pedido pedido);
-    public void delete (Pedido pedido);
+    public String delete (Pedido pedido);
 
 }

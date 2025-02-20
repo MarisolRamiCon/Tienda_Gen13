@@ -36,5 +36,7 @@ public class Producto {
     @Column(name = "stock")
     private Integer stockProducto;
 
+    @Column(name = "es_activo")
+    private  Boolean esActivo = true;
 
 }

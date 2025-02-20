@@ -30,6 +30,9 @@ public class Inventario {
     @Column(name = "cantidad_stock")
     private Integer cantidadStockInve;
 
+    @Column(name = "es_activo")
+    private Boolean esActivo = true;
+
 
 
 }

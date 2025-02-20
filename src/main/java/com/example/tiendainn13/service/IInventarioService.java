@@ -11,5 +11,5 @@ public interface IInventarioService {
     public Optional<Inventario> readById(int id);
     public InventarioResponse create (Inventario inventario);
     public Inventario update (Inventario inventario);
-    public void delete(Inventario inventario);
+    public String delete(Inventario inventario);
 }

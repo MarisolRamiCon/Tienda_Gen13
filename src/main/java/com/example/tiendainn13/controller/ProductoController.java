@@ -45,8 +45,8 @@ public class ProductoController {
     }
 
     @DeleteMapping("/eliminar/producto")
-    public void delete(@RequestBody Producto producto){
-        productoService.delete(producto);
+    public String delete(@RequestBody Producto producto){
+        return productoService.delete(producto);
     }
 
 }

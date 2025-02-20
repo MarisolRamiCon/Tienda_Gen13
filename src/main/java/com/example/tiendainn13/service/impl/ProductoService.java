@@ -4,12 +4,14 @@ import com.example.tiendainn13.entity.Producto;
 import com.example.tiendainn13.repository.IProductoRepository;
 import com.example.tiendainn13.response.ProductoResponse;
 import com.example.tiendainn13.service.IProductoService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ProductoService implements IProductoService {
     @Autowired
@@ -41,8 +43,24 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public void delete(Producto producto) {
-        productoRepository.delete(producto);
+    public String delete(Producto producto) {
+        Optional<Producto> productoOptional = productoRepository.findById(producto.getIdProducto());
+        if (productoOptional.isPresent()){
+            Producto productoABorrar = productoOptional.get();
+            productoABorrar.setEsActivo(false);
+            try {
+                productoRepository.save(productoABorrar);
+                log.info("El producto ha sido borrado");
+                return "El producto ha sido Borrado satisfactoriamente";
+            }catch (Exception e){
+                log.error("Error " + e.getMessage());
+                log.error("Rastreo: " + e.getStackTrace());
+                return "Hubo un error con la base de datos";
+            }
+        }else{
+            log.info("El producto  no existe");
+            return "El producto no existe";
+        }
     }
 
     @Override

@@ -37,7 +37,7 @@ public class PedidoController {
     }
 
     @DeleteMapping("/eliminar/pedido")
-    public void delete(@RequestBody Pedido pedido){
-        pedidoService.delete(pedido);
+    public String delete(@RequestBody Pedido pedido){
+        return pedidoService.delete(pedido);
     }
 }

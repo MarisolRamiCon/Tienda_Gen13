@@ -27,5 +27,8 @@ public class Pedido {
     @Column(name = "total_pe")
     private Integer totalPedido;
 
+    @Column(name = "es_activo")
+    private Boolean esActivo = true;
+
 
 }

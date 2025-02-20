@@ -32,8 +32,8 @@ class PedidoServiceTest {
 
     @Test
     void readAll() {
-        Pedido pedido1 = new Pedido(1, "2025-01-11", 2, 3);
-        Pedido pedido2 = new Pedido(2, "2025-02-14", 3,4);
+        Pedido pedido1 = new Pedido(1, "2025-01-11", 2, 3, true);
+        Pedido pedido2 = new Pedido(2, "2025-02-14", 3,4, true);
         List<Pedido> pedidos = Arrays.asList(pedido1, pedido2);
 
         when(pedidoRepository.findAll()).thenReturn(pedidos);
@@ -48,7 +48,7 @@ class PedidoServiceTest {
     @Test
     void readByIdWhenPedidoExists() {
         int idPedido = 1;
-        Pedido pedido = new Pedido(idPedido, "2025-02-14", 1, 3);
+        Pedido pedido = new Pedido(idPedido, "2025-02-14", 1, 3, true);
         when(pedidoRepository.findById(idPedido)).thenReturn(Optional.of(pedido));
 
         Optional<Pedido> resultado = pedidoService.readById(idPedido);
@@ -68,8 +68,8 @@ class PedidoServiceTest {
 
     @Test
     void create() {
-        Pedido pedidoCreado = new Pedido(1, "2025-02-14", 2, 3);
-        Pedido pedidoRespuestaEs = new Pedido(1, "2025-02-14", 2,3);
+        Pedido pedidoCreado = new Pedido(1, "2025-02-14", 2, 3, true);
+        Pedido pedidoRespuestaEs = new Pedido(1, "2025-02-14", 2,3, true);
 
         when(pedidoRepository.save(pedidoCreado)).thenReturn(pedidoCreado);
 
@@ -83,8 +83,8 @@ class PedidoServiceTest {
     @Test
     void updateWhenPedidoExists() {
         int idPedido = 1;
-        Pedido pedidoActualizado = new Pedido(idPedido, "2025-02-14", 2,30);
-        Pedido pedidoRespuesta = new Pedido(idPedido, "2025-02-14", 2, 30);
+        Pedido pedidoActualizado = new Pedido(idPedido, "2025-02-14", 2,30, true);
+        Pedido pedidoRespuesta = new Pedido(idPedido, "2025-02-14", 2, 30, true);
 
         when(pedidoRepository.save(pedidoActualizado)).thenReturn(pedidoActualizado);
 
@@ -98,8 +98,8 @@ class PedidoServiceTest {
     @Test
     void updateWhenPedidoDoesNotExist(){
         int idPedido = 999;
-        Pedido pedidoActualizado = new Pedido(idPedido, "2025-01-28", 1,30);
-        Pedido pedidoRespuestaEs = new Pedido(idPedido, "2025-01-28", 1, 30);
+        Pedido pedidoActualizado = new Pedido(idPedido, "2025-01-28", 1,30, true);
+        Pedido pedidoRespuestaEs = new Pedido(idPedido, "2025-01-28", 1, 30, true);
         when(pedidoRepository.save(pedidoActualizado)).thenReturn(pedidoActualizado);
 
         Pedido pedidoResponse = pedidoService.update(pedidoActualizado);
@@ -111,7 +111,7 @@ class PedidoServiceTest {
 
     @Test
     void delete() {
-        Pedido pedido = new Pedido(1, "2025-02-14", 2,24);
+        Pedido pedido = new Pedido(1, "2025-02-14", 2,24, true);
         pedidoService.delete(pedido);
         verify(pedidoRepository, times(1)).delete(pedido);
     }

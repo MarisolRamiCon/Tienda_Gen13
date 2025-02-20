@@ -21,8 +21,8 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class InventarioServiceTest {
-    Producto producto1 = new Producto(1, "Galletas Marias", "Gamesa", 23.20, "Alimentos", 1, 30);
-    Producto producto2 = new Producto(2, "Powerade", "Hidratante", 34.12, "Bebida", 4, 23);
+    Producto producto1 = new Producto(1, "Galletas Marias", "Gamesa", 23.20, "Alimentos", 1, 30, true);
+    Producto producto2 = new Producto(2, "Powerade", "Hidratante", 34.12, "Bebida", 4, 23, true);
 
     @Mock
     private IInventarioRepository iInventarioRepository;
@@ -38,8 +38,8 @@ class InventarioServiceTest {
     @Test
     void readAll() {
 
-        Inventario inventario1 = new Inventario(1,producto1,30);
-        Inventario inventario2 = new Inventario(2, producto2, 40);
+        Inventario inventario1 = new Inventario(1,producto1,30, true);
+        Inventario inventario2 = new Inventario(2, producto2, 40, true);
         List<Inventario> inventarios = Arrays.asList(inventario1, inventario2);
 
         when(iInventarioRepository.findAll()).thenReturn(inventarios);
@@ -54,7 +54,7 @@ class InventarioServiceTest {
     @Test
     void readByIdWhenInventarioExists() {
         int idInventario = 1;
-        Inventario inventario = new Inventario(1, producto2, 3);
+        Inventario inventario = new Inventario(1, producto2, 3, true);
         when(iInventarioRepository.findById(idInventario)).thenReturn(Optional.of(inventario));
 
         Optional<Inventario> resultado = inventarioService.readById(idInventario);
@@ -74,8 +74,8 @@ class InventarioServiceTest {
 
     @Test
     void create() {
-        Inventario inventarioCreado = new Inventario(1,producto2,25);
-        Inventario inventarioRespuesta = new Inventario(1,producto2,25);
+        Inventario inventarioCreado = new Inventario(1,producto2,25, true);
+        Inventario inventarioRespuesta = new Inventario(1,producto2,25, true);
 
         when(iInventarioRepository.save(inventarioCreado)).thenReturn(inventarioRespuesta);
         InventarioResponse inventarioResultado = inventarioService.create(inventarioCreado);
@@ -90,7 +90,7 @@ class InventarioServiceTest {
     @Test
     void updateWhenInventarioExists() {
         int idInventario = 1;
-        Inventario inventarioActualizado = new Inventario(idInventario,producto2,26);
+        Inventario inventarioActualizado = new Inventario(idInventario,producto2,26, true);
         InventarioResponse inventarioRespuesta = new InventarioResponse(producto2, 26);
 
         when(iInventarioRepository.save(inventarioActualizado)).thenReturn(inventarioActualizado);
@@ -105,7 +105,7 @@ class InventarioServiceTest {
     @Test
     void updateWhenInventarioDoesNotExist(){
         int idInventario = 999;
-        Inventario inventarioActualizado = new Inventario(idInventario, producto2, 50);
+        Inventario inventarioActualizado = new Inventario(idInventario, producto2, 50, true);
         InventarioResponse inventarioRespuestaEs = new InventarioResponse(producto2, 50);
         when(iInventarioRepository.save(inventarioActualizado)).thenReturn(inventarioActualizado);
 
@@ -119,7 +119,7 @@ class InventarioServiceTest {
 
     @Test
     void delete() {
-        Inventario inventario = new Inventario(1,producto2,30);
+        Inventario inventario = new Inventario(1,producto2,30, true);
         inventarioService.delete(inventario);
 
         verify(iInventarioRepository, times(1)).delete(inventario);

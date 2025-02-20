@@ -36,7 +36,7 @@ public class InventarioController {
     }
 
     @DeleteMapping("/eliminar/inventario")
-    public void  delete(@RequestBody Inventario inventario){
-         inventarioService.delete(inventario);
+    public String  delete(@RequestBody Inventario inventario){
+         return inventarioService.delete(inventario);
     }
 }

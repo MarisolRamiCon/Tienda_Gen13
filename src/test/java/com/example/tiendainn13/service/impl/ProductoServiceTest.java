@@ -30,8 +30,8 @@ class ProductoServiceTest {
 
     @Test
     void readAll() { //Listar Productos
-        Producto producto1 = new Producto(1, "Galletas marias", "Marias Gamesa", 25.25, "Alimentos", 1, 20);
-        Producto producto2 = new Producto(2, "Papas adobadas", "Sabritas", 18.20, "Frituras", 3, 40);
+        Producto producto1 = new Producto(1, "Galletas marias", "Marias Gamesa", 25.25, "Alimentos", 1, 20, true);
+        Producto producto2 = new Producto(2, "Papas adobadas", "Sabritas", 18.20, "Frituras", 3, 40, true);
         List<Producto> productos = Arrays.asList(producto1, producto2);
 
         when(productoRepository.findAll()).thenReturn(productos);
@@ -46,7 +46,7 @@ class ProductoServiceTest {
     @Test
     void readByIdWhenProductoExists() {
         int idProducto = 1;
-        Producto producto = new Producto(idProducto, "Producto 1", "Gamesa", 23.23, "Alimentos", 1, 20);
+        Producto producto = new Producto(idProducto, "Producto 1", "Gamesa", 23.23, "Alimentos", 1, 20, true);
         when(productoRepository.findById(idProducto)).thenReturn(Optional.of(producto));
 
         Optional<Producto> resultado = productoService.readById(idProducto);
@@ -66,7 +66,7 @@ class ProductoServiceTest {
 
     @Test
     void create() {
-        Producto productoCreado = new Producto(1, "Powerade", "Bebida Hidratante", 20.50, "Bebidad", 1, 50);
+        Producto productoCreado = new Producto(1, "Powerade", "Bebida Hidratante", 20.50, "Bebidad", 1, 50, true);
         ProductoResponse productoRespuestaEsperado = new ProductoResponse("Powerade", 20.50);
 
         when(productoRepository.save(productoCreado)).thenReturn(productoCreado);
@@ -83,7 +83,7 @@ class ProductoServiceTest {
     @Test
     void updateWhenProductoExists() {
         int idProducto = 1;
-        Producto productoActualizado = new Producto(idProducto, "Coca Cola", "Bebida de sabor", 50.00, "Bebidas", 4, 30);
+        Producto productoActualizado = new Producto(idProducto, "Coca Cola", "Bebida de sabor", 50.00, "Bebidas", 4, 30, true);
         ProductoResponse productoRespuesta = new ProductoResponse("Coca Cola", 50.00);
 
         when(productoRepository.save(productoActualizado)).thenReturn(productoActualizado);
@@ -97,7 +97,7 @@ class ProductoServiceTest {
     @Test
     void updateWhenProductoDoesNotExist(){
         int idProducto = 999;
-        Producto productoActualizado = new Producto(idProducto, "Coca Cola", "Bebida dde sabor", 50.0, "bebida", 3, 30);
+        Producto productoActualizado = new Producto(idProducto, "Coca Cola", "Bebida dde sabor", 50.0, "bebida", 3, 30, true);
         ProductoResponse productoRespuestaEsperado = new ProductoResponse("Coca Cola", 50.0);
         when(productoRepository.save(productoActualizado)).thenReturn(productoActualizado);
 
@@ -110,7 +110,7 @@ class ProductoServiceTest {
 
     @Test
     void delete() {
-        Producto producto = new Producto(1,"Aceite Patrona", "Producto para cocina", 15.23, "De uso domestico", 3, 45);
+        Producto producto = new Producto(1,"Aceite Patrona", "Producto para cocina", 15.23, "De uso domestico", 3, 45,true);
         productoService.delete(producto);
 
         verify(productoRepository, times(1)).delete(producto);
@@ -121,8 +121,8 @@ class ProductoServiceTest {
         double precioP = 100.0;
         int stock = 10;
 
-        Producto producto1 = new Producto(1, "Producto1", "Descripcion producto1", 50.0, "Categoria Producto1", 15, 15);
-        Producto producto2 = new Producto(2, "Producto2", "Descripcion producto2", 80.0, "Categoria Producto2", 20, 20);
+        Producto producto1 = new Producto(1, "Producto1", "Descripcion producto1", 50.0, "Categoria Producto1", 15, 15, true);
+        Producto producto2 = new Producto(2, "Producto2", "Descripcion producto2", 80.0, "Categoria Producto2", 20, 20, true);
         List<Producto> productosEsperados = Arrays.asList(producto1, producto2);
 
         //Simula el comportamiento de productoRepository.precioMenor()
