@@ -1,6 +1,5 @@
 package com.example.tiendainn13.response;
 
-import com.example.tiendainn13.entity.Producto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class InventarioResponse {
-    private Integer cantidadStockInve;
-
-
+public class PedidoResponse {
+    private String fechaPedido;
+    private Integer clientePedido;
 }

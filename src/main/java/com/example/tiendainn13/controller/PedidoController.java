@@ -1,6 +1,7 @@
 package com.example.tiendainn13.controller;
 
 import com.example.tiendainn13.entity.Pedido;
+import com.example.tiendainn13.response.PedidoResponse;
 import com.example.tiendainn13.service.impl.PedidoService;
 import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +33,12 @@ public class PedidoController {
 
 
     @PostMapping("/crear/pedido")
-    public Pedido create(@RequestBody Pedido pedido){
+    public PedidoResponse create(@RequestBody Pedido pedido){
         return pedidoService.create(pedido);
     }
 
     @PutMapping("/actualizar/pedido")
-    public Pedido update(@RequestBody Pedido pedido){
+    public PedidoResponse update(@RequestBody Pedido pedido){
         return pedidoService.update(pedido);
     }
 

@@ -3,6 +3,7 @@ package com.example.tiendainn13.service.impl;
 import com.example.tiendainn13.entity.Inventario;
 import com.example.tiendainn13.entity.Pedido;
 import com.example.tiendainn13.repository.IPedidoRepository;
+import com.example.tiendainn13.response.PedidoResponse;
 import com.example.tiendainn13.service.IPedidoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,13 +29,17 @@ public class PedidoService implements IPedidoService {
     }
 
     @Override
-    public Pedido create(Pedido pedido) {
-        return pedidoRepository.save(pedido);
+    public PedidoResponse create(Pedido pedido) {
+        pedidoRepository.save(pedido);
+        PedidoResponse pedidoResponse = new PedidoResponse(pedido.getFechaPedido(), pedido.getClientePedido());
+        return pedidoResponse;
     }
 
     @Override
-    public Pedido update(Pedido pedido) {
-        return pedidoRepository.save(pedido);
+    public PedidoResponse update(Pedido pedido) {
+         pedidoRepository.save(pedido);
+         PedidoResponse pedidoResponse = new PedidoResponse(pedido.getFechaPedido(), pedido.getClientePedido());
+         return pedidoResponse;
     }
 
     @Override

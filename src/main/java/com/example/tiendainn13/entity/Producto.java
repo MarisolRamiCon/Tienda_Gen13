@@ -39,4 +39,6 @@ public class Producto {
     @Column(name = "es_activo")
     private  Boolean esActivo = true;
 
+
+
 }

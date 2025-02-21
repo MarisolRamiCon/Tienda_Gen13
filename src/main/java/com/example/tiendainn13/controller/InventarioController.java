@@ -37,7 +37,7 @@ public class InventarioController {
     }
 
     @PutMapping("/actualizar/inventario")
-    public Inventario update(@RequestBody Inventario inventario){
+    public InventarioResponse update(@RequestBody Inventario inventario){
         return inventarioService.update(inventario);
     }
 

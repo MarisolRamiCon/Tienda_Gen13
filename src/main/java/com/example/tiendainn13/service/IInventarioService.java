@@ -10,7 +10,7 @@ public interface IInventarioService {
     public List<Inventario> readAll();
     public Optional<Inventario> readById(int id);
     public InventarioResponse create (Inventario inventario);
-    public Inventario update (Inventario inventario);
+    public InventarioResponse update (Inventario inventario);
     public String delete(Inventario inventario);
     public List<Inventario> buscarPorCantidadStockInve(Integer stock);
 }
