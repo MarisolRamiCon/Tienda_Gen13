@@ -18,7 +18,7 @@ public class PedidoService implements IPedidoService {
     IPedidoRepository pedidoRepository;
     @Override
     public List<Pedido> readAll() {
-        return pedidoRepository.findAll();
+        return pedidoRepository.findAll().stream().filter(pedido ->pedido.getEsActivo()==true).toList();
     }
 
     @Override

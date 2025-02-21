@@ -19,7 +19,7 @@ public class ProductoService implements IProductoService {
 
     @Override
     public List<Producto> readAll() {
-        return productoRepository.findAll();
+        return productoRepository.findAll().stream().filter(producto -> producto.getEsActivo()==true).toList();
     }
 
     @Override

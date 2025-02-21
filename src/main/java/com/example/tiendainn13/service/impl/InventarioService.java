@@ -16,10 +16,9 @@ import java.util.Optional;
 public class InventarioService implements IInventarioService {
     @Autowired
     IInventarioRepository iInventarioRepository;
-
     @Override
     public List<Inventario> readAll() {
-        return iInventarioRepository.findAll();
+        return iInventarioRepository.findAll().stream().filter(inventario -> inventario.getEsActivo()==true).toList();
     }
 
     @Override
