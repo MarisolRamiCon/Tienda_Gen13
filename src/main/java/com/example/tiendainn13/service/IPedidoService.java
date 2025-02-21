@@ -14,5 +14,6 @@ public interface IPedidoService {
     public PedidoResponse update (Pedido pedido);
     public String delete (Pedido pedido);
     public List<Pedido> buscarPorTotalPedido(Integer tPedido);
+    public List<Pedido> totalPedidoMenorA(Integer totalPedido);
 
 }

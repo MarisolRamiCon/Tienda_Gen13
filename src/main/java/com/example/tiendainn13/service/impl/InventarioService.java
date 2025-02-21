@@ -66,4 +66,9 @@ public class InventarioService implements IInventarioService {
     public List<Inventario> buscarPorCantidadStockInve(Integer stock) {
         return iInventarioRepository.findByCantidadStockInve(stock);
     }
+
+    @Override
+    public List<Inventario> buscarEsActivoYCantidadStock(Boolean activo, Integer stock) {
+        return iInventarioRepository.esActivo(activo, stock);
+    }
 }

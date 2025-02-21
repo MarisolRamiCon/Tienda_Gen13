@@ -68,5 +68,10 @@ public class PedidoService implements IPedidoService {
         return pedidoRepository.findByTotalPedido(tPedido);
     }
 
+    @Override
+    public List<Pedido> totalPedidoMenorA(Integer totalPedido) {
+        return pedidoRepository.findByTotalPedidoMenorA(totalPedido);
+    }
+
 
 }

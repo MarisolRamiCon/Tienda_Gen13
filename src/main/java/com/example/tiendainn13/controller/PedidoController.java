@@ -31,6 +31,12 @@ public class PedidoController {
         return pedidoService.buscarPorTotalPedido(tPedido);
     }
 
+    //Buscar pedidos donde el total de pedidos sea menor a una cantidad
+    @GetMapping("/pedidosmenor")
+    public List<Pedido> totalPedidoMenorA(@PathParam("total_pe") Integer totalPedido){
+        return pedidoService.totalPedidoMenorA(totalPedido);
+    }
+
 
     @PostMapping("/crear/pedido")
     public PedidoResponse create(@RequestBody Pedido pedido){

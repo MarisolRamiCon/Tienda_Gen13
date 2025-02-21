@@ -13,4 +13,5 @@ public interface IInventarioService {
     public InventarioResponse update (Inventario inventario);
     public String delete(Inventario inventario);
     public List<Inventario> buscarPorCantidadStockInve(Integer stock);
+    public List<Inventario> buscarEsActivoYCantidadStock(Boolean activo, Integer stock);
 }

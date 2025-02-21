@@ -31,6 +31,12 @@ public class InventarioController {
         return inventarioService.buscarPorCantidadStockInve(stock);
     }
 
+    //Mostrar si es activo o no y candidad stock menor a
+    @GetMapping("/mostrar/esactivo")
+    public List<Inventario> buscarEsActivoYCantidadStock(@PathParam("es_activo") Boolean activo, @PathParam("cantidad_stock") Integer stock){
+        return inventarioService.buscarEsActivoYCantidadStock(activo, stock);
+    }
+
     @PostMapping("/crear/inventario")
     public InventarioResponse create(@RequestBody Inventario inventario){
         return  inventarioService.create(inventario);
